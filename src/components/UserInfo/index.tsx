@@ -15,10 +15,20 @@ import { green, grey } from "@mui/material/colors";
 import { useUserStore } from "../../stores/useUserStore";
 
 const UserInfo = () => {
-  const userCalories = useUserStore((state) => state.userCalories);
-  const userCarbs = useUserStore((state) => state.userCarbs);
-  const userFat = useUserStore((state) => state.userFat);
-  const userProtein = useUserStore((state) => state.userProtein);
+  // const userCalories = useUserStore((state) => state.userCalories);
+  // const userCarbs = useUserStore((state) => state.userCarbs);
+  // const userFat = useUserStore((state) => state.userFat);
+  // const userProtein = useUserStore((state) => state.userProtein);
+  const calculate = useUserStore((state) => state.actions.calculate);
+
+  const { userCalories, userCarbs, userFat, userProtein } = useUserStore(
+    (state) => ({
+      userCalories: state.userCalories,
+      userCarbs: state.userCarbs,
+      userFat: state.userFat,
+      userProtein: state.userProtein,
+    })
+  );
 
   const properties = [
     { id: 1, key: "Calories(kcal)", value: userCalories },
@@ -30,6 +40,7 @@ const UserInfo = () => {
   return (
     <Card>
       <CardContent sx={{ padding: 0, paddingBottom: "0px !important" }}>
+        {console.log("inside", userCalories)}
         <Box
           display="flex"
           flexDirection="column"
@@ -52,7 +63,9 @@ const UserInfo = () => {
           <Typography variant="h6" color={grey[600]}>
             You've Consumed
           </Typography>
-          <Button variant="contained">Calculate</Button>
+          <Button variant="contained" onClick={() => calculate()}>
+            Calculate
+          </Button>
         </Box>
         <Box p={2}>
           <List>
@@ -65,7 +78,7 @@ const UserInfo = () => {
                 </ListItemAvatar>
                 <ListItemText
                   primary={propertie.key}
-                  secondary={propertie.value}
+                  secondary={propertie.value.toFixed(2)}
                 />
               </ListItem>
             ))}

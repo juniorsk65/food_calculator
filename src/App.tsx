@@ -12,7 +12,7 @@ function App() {
       paddingY={{ xs: 1, lg: 2 }}
     >
       <Grid container spacing={4}>
-        <Grid item xs={3}>
+        <Grid item md={4} xs={3}>
           <UserInfo />
         </Grid>
         <Grid item xs>

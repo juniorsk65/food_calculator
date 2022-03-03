@@ -63,13 +63,19 @@ export const useUserStore = create<StoreState>((set, get) => ({
         })
       ),
     calculate: () =>
-      set(
-        produce<StoreState>(
-          ({ userCalories, userCarbs, userFat, userProtein, meals }) => {
-            // meals.reduce((acc, cur) => [...acc.],[])
-          }
-        )
-      ),
+      set((state) => {
+        get()
+          .meals.reduce<Food[]>((acc, cur) => {
+            acc = [...acc, ...cur.foodList];
+            return acc;
+          }, [])
+          .forEach((item) => {
+            state.userCalories += item.calories;
+            state.userCarbs += item.carbs;
+            state.userFat += item.fat;
+            state.userProtein += item.protein;
+          });
+      }),
   },
   meals: [
     {
