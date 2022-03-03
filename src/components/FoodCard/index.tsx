@@ -49,8 +49,9 @@ const FoodCard = ({ id, title, mealId, properties }: FoodCardProps) => {
         }}
       >
         <List dense>
-          {Object.entries(properties).map(([key, value]) => (
+          {Object.entries(properties).map(([key, value], index) => (
             <ListItem
+              key={index}
               alignItems="flex-start"
               sx={{
                 display: "flex",

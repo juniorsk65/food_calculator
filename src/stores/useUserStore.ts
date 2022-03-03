@@ -57,24 +57,29 @@ export const useUserStore = create<StoreState>((set, get) => ({
           const meal = meals.find((meal) => meal.id === mealId);
           const filtered = meal?.foodList.filter((food) => food.id !== foodId);
           if (filtered && meal) {
-            console.log("aqui");
             meal.foodList = filtered;
           }
         })
       ),
     calculate: () =>
       set((state) => {
-        get()
-          .meals.reduce<Food[]>((acc, cur) => {
-            acc = [...acc, ...cur.foodList];
-            return acc;
-          }, [])
-          .forEach((item) => {
+        const allFoods = get().meals.reduce<Food[]>((acc, cur) => {
+          acc = [...acc, ...cur.foodList];
+          return acc;
+        }, []);
+        if (allFoods.length > 0) {
+          allFoods.forEach((item) => {
             state.userCalories += item.calories;
             state.userCarbs += item.carbs;
             state.userFat += item.fat;
             state.userProtein += item.protein;
           });
+        } else {
+          state.userCalories = 0;
+          state.userCarbs = 0;
+          state.userFat = 0;
+          state.userProtein = 0;
+        }
       }),
   },
   meals: [

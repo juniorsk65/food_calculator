@@ -40,7 +40,6 @@ const UserInfo = () => {
   return (
     <Card>
       <CardContent sx={{ padding: 0, paddingBottom: "0px !important" }}>
-        {console.log("inside", userCalories)}
         <Box
           display="flex"
           flexDirection="column"
@@ -69,8 +68,8 @@ const UserInfo = () => {
         </Box>
         <Box p={2}>
           <List>
-            {properties.map((propertie) => (
-              <ListItem>
+            {properties.map((propertie, index) => (
+              <ListItem key={index}>
                 <ListItemAvatar>
                   <Avatar>
                     <ImageIcon />

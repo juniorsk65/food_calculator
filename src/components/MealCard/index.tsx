@@ -105,8 +105,10 @@ const MealCard = ({ id, title, subHeader, color }: MealCardProps) => {
                 input={<OutlinedInput label="Food" id="demo-dialog-native" />}
               >
                 <option aria-label="None" value="" />
-                {foods.map((food) => (
-                  <option value={food.id}>{food.name}</option>
+                {foods.map((food, index) => (
+                  <option key={index} value={food.id}>
+                    {food.name}
+                  </option>
                 ))}
               </Select>
             </FormControl>
