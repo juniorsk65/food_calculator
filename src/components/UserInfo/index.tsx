@@ -15,20 +15,20 @@ import { green, grey } from "@mui/material/colors";
 import { useUserStore } from "../../stores/useUserStore";
 
 const UserInfo = () => {
-  // const userCalories = useUserStore((state) => state.userCalories);
-  // const userCarbs = useUserStore((state) => state.userCarbs);
-  // const userFat = useUserStore((state) => state.userFat);
-  // const userProtein = useUserStore((state) => state.userProtein);
+  const userCalories = useUserStore((state) => state.userCalories);
+  const userCarbs = useUserStore((state) => state.userCarbs);
+  const userFat = useUserStore((state) => state.userFat);
+  const userProtein = useUserStore((state) => state.userProtein);
   const calculate = useUserStore((state) => state.actions.calculate);
 
-  const { userCalories, userCarbs, userFat, userProtein } = useUserStore(
-    (state) => ({
-      userCalories: state.userCalories,
-      userCarbs: state.userCarbs,
-      userFat: state.userFat,
-      userProtein: state.userProtein,
-    })
-  );
+  // const { userCalories, userCarbs, userFat, userProtein } = useUserStore(
+  //   (state) => ({
+  //     userCalories: state.userCalories,
+  //     userCarbs: state.userCarbs,
+  //     userFat: state.userFat,
+  //     userProtein: state.userProtein,
+  //   })
+  // );
 
   const properties = [
     { id: 1, key: "Calories(kcal)", value: userCalories },
