@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import ImageIcon from "@mui/icons-material/Image";
-import { green, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import { useUserStore } from "../../stores/useUserStore";
 
 const UserInfo = () => {
@@ -46,10 +46,10 @@ const UserInfo = () => {
           alignItems="center"
           p={2}
           mb={2}
-          sx={{ backgroundColor: green[100] }}
+          sx={{ backgroundColor: "#023e8a" }}
         >
           <Avatar alt="user" sx={{ width: 80, height: 80 }} />
-          <Typography variant="h5" color={grey[600]}>
+          <Typography variant="h5" color="#fefcfb">
             Hello, Luciano
           </Typography>
         </Box>
@@ -62,7 +62,11 @@ const UserInfo = () => {
           <Typography variant="h6" color={grey[600]}>
             You've Consumed
           </Typography>
-          <Button variant="contained" onClick={() => calculate()}>
+          <Button
+            sx={{ backgroundColor: "#48cae4" }}
+            variant="contained"
+            onClick={() => calculate()}
+          >
             Calculate
           </Button>
         </Box>

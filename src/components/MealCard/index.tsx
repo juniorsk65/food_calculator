@@ -20,7 +20,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import FoodCard from "../FoodCard";
 import { useState } from "react";
 import { foods } from "../../stores/db";
-import { Food, useUserStore } from "../../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 
 interface MealCardProps {
   id: number;
@@ -57,15 +57,18 @@ const MealCard = ({ id, title, subHeader, color }: MealCardProps) => {
             backgroundColor: color,
             display: "flex",
             justifyContent: "center",
+            color: "#fefcfb",
           }}
           title={title}
           titleTypographyProps={{ variant: "h5" }}
           subheader={subHeader}
+          subheaderTypographyProps={{ color: "#b6b4b3" }}
           action={
             <Tooltip title="Add new food" placement="bottom">
               <Button
                 variant="contained"
                 aria-label="add more"
+                sx={{ backgroundColor: "#48cae4" }}
                 endIcon={<AddCircleOutlineIcon />}
                 onClick={() => setOpen(true)}
               >
@@ -75,7 +78,9 @@ const MealCard = ({ id, title, subHeader, color }: MealCardProps) => {
           }
         />
         <Divider variant="middle" />
-        <CardContent sx={{ display: "flex" }}>
+        <CardContent
+          sx={{ display: "flex", maxWidth: "100%", overflow: "scroll" }}
+        >
           {foodList.map((food) => (
             <FoodCard
               id={food.id}

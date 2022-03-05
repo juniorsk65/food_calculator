@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { blue, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import { useUserStore } from "../../stores/useUserStore";
 
 interface FoodCardProps {
@@ -36,7 +36,7 @@ const FoodCard = ({ id, title, mealId, properties }: FoodCardProps) => {
         action={
           <Tooltip title="Remove item" placement="top">
             <IconButton onClick={() => removeFood({ mealId, foodId: id })}>
-              <DeleteIcon color="error" />
+              <DeleteIcon color="primary" />
             </IconButton>
           </Tooltip>
         }
