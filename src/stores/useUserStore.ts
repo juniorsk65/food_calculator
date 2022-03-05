@@ -73,6 +73,10 @@ export const useUserStore = create<StoreState>(
             return acc;
           }, []);
           if (allFoods.length > 0) {
+            state.userCalories = 0;
+            state.userCarbs = 0;
+            state.userFat = 0;
+            state.userProtein = 0;
             allFoods.forEach((item) => {
               state.userCalories += item.calories;
               state.userCarbs += item.carbs;
